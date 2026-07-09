@@ -74,9 +74,13 @@
     color:var(--gold); line-height:1.05; margin:0;}
   .lead{color:var(--ink); max-width:580px; margin:16px auto 0; font-size:clamp(15px,2.2vw,18px);}
 
-  /* ythr brand lockup — theme-aware: warm-white mark on the dark hero, near-black on light. */
-  .brand{margin:0 0 18px; line-height:0;}
-  .hero-logo{display:none; width:min(168px, 52vw); height:auto; margin:0 auto;}
+  /* ythr brand lockup — the Y mark with a small "ythr" tucked at its bottom-right.
+     Theme-aware: warm-white mark on the dark hero, near-black on light. */
+  .brand{margin:0 0 16px;}
+  .lockup{display:inline-flex; align-items:flex-end; gap:0; line-height:0;}
+  .hero-logo{display:none; width:min(80px, 25vw); height:auto;}
+  .brand-word{font-family:'Baloo 2', sans-serif; font-weight:700; font-size:28px; letter-spacing:.01em;
+    color:var(--muted); line-height:1; padding-bottom:12px; margin-left:-14px;}
   .hero-ondark{display:block;}                                   /* default theme is dark */
   @media (prefers-color-scheme: light){
     :root:not([data-theme="dark"]) .hero-ondark{display:none;}
@@ -131,8 +135,11 @@
   <header>
     <div class="wrap">
       <div class="brand">
-        <img class="hero-logo hero-ondark" src="assets/ythr-hero-ondark.png" alt="ythr" width="168">
-        <img class="hero-logo hero-onlight" src="assets/ythr-hero-onlight.png" alt="ythr" width="168">
+        <span class="lockup" aria-label="ythr">
+          <img class="hero-logo hero-ondark" src="assets/ythr-mark-ondark.png" alt="" width="80">
+          <img class="hero-logo hero-onlight" src="assets/ythr-mark-onlight.png" alt="" width="80">
+          <span class="brand-word">ythr</span>
+        </span>
       </div>
       <p class="kicker">Apps</p>
       <h1>Made with care</h1>
