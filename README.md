@@ -1,5 +1,8 @@
 <p align="center">
-  <img src="assets/ythr-logo.png" alt="ythr" width="220">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/ythr-hero-ondark.png">
+    <img src="assets/ythr-hero-onlight.png" alt="ythr" width="220">
+  </picture>
 </p>
 
 # apps — a little hub of learning & tooling
