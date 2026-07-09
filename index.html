@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Apps for curious kids</title>
-<meta name="description" content="A small collection of calm, ad-free apps for curious kids and their families — Gnaana-Kosha, Gaṇitha, and Abhyaasa.">
+<title>Apps — for curious kids &amp; for QA</title>
+<meta name="description" content="A small collection of apps: calm, ad-free apps for curious kids and their families, and open-source tools for QA &amp; test automation.">
 <meta name="theme-color" content="#0B0E2E" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#f7f8fc" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCI+PHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiByeD0iMTQiIGZpbGw9IiMxNzFCNEQiLz48ZyBmaWxsPSIjRjJCODRCIj48cmVjdCB4PSIxMyIgeT0iMTMiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjMuNSIvPjxyZWN0IHg9IjM1IiB5PSIxMyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiByeD0iMy41Ii8+PHJlY3QgeD0iMTMiIHk9IjM1IiB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHJ4PSIzLjUiLz48cmVjdCB4PSIzNSIgeT0iMzUiIHdpZHRoPSIxNiIgaGVpZ2h0PSIxNiIgcng9IjMuNSIvPjwvZz48L3N2Zz4=">
@@ -17,9 +17,10 @@
     color-scheme: dark;
     --bg1:#1c2560; --bg2:#0B0E2E;
     --ink:#F5F3ED; --muted:#9FA8D9; --card:#1E2260; --line:rgba(255,255,255,.10);
-    --gold:#F2B84B;
+    --gold:#F2B84B; --on-gold:#241a00;
     --inv-bg:rgba(242,184,75,.12); --inv-bd:rgba(242,184,75,.34); --inv-fg:#f5c86e;
     --trk-bg:rgba(150,170,255,.12); --trk-bd:rgba(150,170,255,.34); --trk-fg:#b9c4ff;
+    --oss-bg:rgba(80,205,165,.13); --oss-bd:rgba(80,205,165,.36); --oss-fg:#78e3bd;
     --shadow:rgba(0,0,0,.28);
   }
   /* ---- light values, reused for system-light and toggle-forced-light ---- */
@@ -28,9 +29,10 @@
       color-scheme: light;
       --bg1:#ffffff; --bg2:#e9ecf6;
       --ink:#1b2050; --muted:#5c6494; --card:#ffffff; --line:rgba(20,25,70,.10);
-      --gold:#b7770e;
+      --gold:#b7770e; --on-gold:#ffffff;
       --inv-bg:rgba(183,119,14,.10); --inv-bd:rgba(183,119,14,.32); --inv-fg:#8a5a00;
       --trk-bg:rgba(60,80,180,.10); --trk-bd:rgba(60,80,180,.30); --trk-fg:#3a4bb0;
+      --oss-bg:rgba(15,120,88,.10); --oss-bd:rgba(15,120,88,.30); --oss-fg:#0f7a58;
       --shadow:rgba(30,40,90,.14);
     }
   }
@@ -38,9 +40,10 @@
     color-scheme: light;
     --bg1:#ffffff; --bg2:#e9ecf6;
     --ink:#1b2050; --muted:#5c6494; --card:#ffffff; --line:rgba(20,25,70,.10);
-    --gold:#b7770e;
+    --gold:#b7770e; --on-gold:#ffffff;
     --inv-bg:rgba(183,119,14,.10); --inv-bd:rgba(183,119,14,.32); --inv-fg:#8a5a00;
     --trk-bg:rgba(60,80,180,.10); --trk-bd:rgba(60,80,180,.30); --trk-fg:#3a4bb0;
+    --oss-bg:rgba(15,120,88,.10); --oss-bd:rgba(15,120,88,.30); --oss-fg:#0f7a58;
     --shadow:rgba(30,40,90,.14);
   }
 
@@ -63,13 +66,29 @@
   }
   .theme-toggle:hover{transform:scale(1.08);}
 
-  header{text-align:center; padding:72px 20px 26px;}
+  header{text-align:center; padding:72px 20px 8px;}
   .kicker{font-size:13px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); margin:0 0 12px;}
   h1{font-family:'Baloo 2', sans-serif; font-weight:800; font-size:clamp(34px, 7vw, 52px);
     color:var(--gold); line-height:1.05; margin:0;}
-  .lead{color:var(--ink); max-width:560px; margin:16px auto 0; font-size:clamp(15px,2.2vw,18px);}
+  .lead{color:var(--ink); max-width:580px; margin:16px auto 0; font-size:clamp(15px,2.2vw,18px);}
 
-  .cards{display:flex; flex-direction:column; gap:16px; padding:12px 0 8px;}
+  /* ---- segmented tabs ---- */
+  .tabsbar{display:flex; justify-content:center; padding:26px 20px 6px;}
+  .tabs{display:inline-flex; gap:5px; background:var(--card); border:1px solid var(--line);
+    border-radius:999px; padding:5px; box-shadow:0 8px 22px var(--shadow);}
+  .tab{border:0; background:transparent; color:var(--muted); font-family:'Baloo 2', sans-serif;
+    font-weight:700; font-size:15px; padding:10px 22px; border-radius:999px; cursor:pointer;
+    transition:background .15s ease, color .15s ease;}
+  .tab:hover{color:var(--ink);}
+  .tab.active{background:var(--gold); color:var(--on-gold); box-shadow:0 4px 12px var(--shadow);}
+
+  .panel{display:none; animation:fade .28s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0; transform:translateY(6px);} to{opacity:1; transform:none;}}
+  @media (prefers-reduced-motion: reduce){ .panel{animation:none;} }
+  .intro{text-align:center; color:var(--muted); max-width:560px; margin:8px auto 4px; font-size:14.5px;}
+
+  .cards{display:flex; flex-direction:column; gap:16px; padding:14px 0 8px;}
   .app{display:block; background:var(--card); border:1px solid var(--line); border-radius:18px;
     padding:22px 22px; transition:transform .12s ease, border-color .12s ease, box-shadow .12s ease;}
   .app:hover{transform:translateY(-3px); border-color:var(--inv-bd); box-shadow:0 16px 40px var(--shadow);}
@@ -78,9 +97,12 @@
   .tag{margin-left:auto; font-size:12px; font-weight:700; padding:5px 11px; border-radius:999px; white-space:nowrap;}
   .tag.invite{background:var(--inv-bg); border:1px solid var(--inv-bd); color:var(--inv-fg);}
   .tag.tracker{background:var(--trk-bg); border:1px solid var(--trk-bd); color:var(--trk-fg);}
+  .tag.oss{background:var(--oss-bg); border:1px solid var(--oss-bd); color:var(--oss-fg);}
   .app-desc{color:var(--muted); margin:10px 0 0; font-size:15px;}
   .app-go{display:inline-block; margin-top:14px; color:var(--gold); font-weight:700; font-size:14.5px;}
   .app-ico{width:44px; height:44px; border-radius:11px; object-fit:cover; flex-shrink:0; box-shadow:0 2px 8px var(--shadow);}
+  .app-ico.emoji{display:flex; align-items:center; justify-content:center; font-size:23px;
+    background:var(--trk-bg); border:1px solid var(--trk-bd); box-shadow:none;}
 
   footer{text-align:center; color:var(--muted); font-size:12.5px; padding:34px 20px 46px; line-height:1.7;}
   footer .disc{max-width:600px; margin:8px auto 0; opacity:.8;}
@@ -92,45 +114,86 @@
   <header>
     <div class="wrap">
       <p class="kicker">Apps</p>
-      <h1>For curious kids</h1>
-      <p class="lead">A small collection of calm, ad-free apps for curious kids and their families — no clutter, just focused practice.</p>
+      <h1>Made with care</h1>
+      <p class="lead">Two different things I build: calm, ad-free apps for curious kids and their families, and open-source tools for QA &amp; test automation.</p>
     </div>
   </header>
 
-  <main class="wrap">
-    <div class="cards">
-
-      <a class="app" href="https://yoggit.github.io/gnaana-kosha-welcome/">
-        <div class="app-top">
-          <img class="app-ico" src="assets/gnaana.png" alt="" width="44" height="44">
-          <p class="app-name">Gnaana-Kosha</p>
-          <span class="tag invite">🔒 Invitation-only</span>
-        </div>
-        <p class="app-desc">A calm, ad-free learning hub for curious children in grades 3–6 — nine subjects and 13,000+ fact-checked questions. A treasure-house of knowledge.</p>
-        <span class="app-go">Visit →</span>
-      </a>
-
-      <a class="app" href="https://yoggit.github.io/ganitha-welcome/">
-        <div class="app-top">
-          <img class="app-ico" src="assets/ganitha.png" alt="" width="44" height="44">
-          <p class="app-name">Gaṇitha</p>
-          <span class="tag invite">🔒 Invitation-only</span>
-        </div>
-        <p class="app-desc">Elementary math &amp; reasoning practice — eight skill areas, a timed Full Practice Test, and a short “Why” explaining every answer you miss.</p>
-        <span class="app-go">Visit →</span>
-      </a>
-
-      <a class="app" href="https://yoggit.github.io/Abhyaasa/">
-        <div class="app-top">
-          <img class="app-ico" src="assets/abhyaasa.png" alt="" width="44" height="44">
-          <p class="app-name">Abhyaasa</p>
-          <span class="tag invite">🔒 Invitation-only</span>
-        </div>
-        <p class="app-desc">Track daily music practice, classes, and fees — kids log their practice and earn rewards, while parents share progress with a teacher. Works on any device — a music practice tracker.</p>
-        <span class="app-go">Visit →</span>
-      </a>
-
+  <div class="tabsbar">
+    <div class="tabs" role="tablist" aria-label="App categories">
+      <button class="tab active" id="tab-kids" role="tab" aria-selected="true"  aria-controls="panel-kids" data-tab="kids">🧒 For Kids</button>
+      <button class="tab"        id="tab-pro"  role="tab" aria-selected="false" aria-controls="panel-pro"  data-tab="pro">🛠️ Professional</button>
     </div>
+  </div>
+
+  <main class="wrap">
+
+    <!-- ── For Kids ── -->
+    <section class="panel active" id="panel-kids" role="tabpanel" aria-labelledby="tab-kids">
+      <p class="intro">Calm, ad-free, invitation-only apps for children and their families — no clutter, just focused practice.</p>
+      <div class="cards">
+
+        <a class="app" href="https://yoggit.github.io/gnaana-kosha-welcome/">
+          <div class="app-top">
+            <img class="app-ico" src="assets/gnaana.png" alt="" width="44" height="44">
+            <p class="app-name">Gnaana-Kosha</p>
+            <span class="tag invite">🔒 Invitation-only</span>
+          </div>
+          <p class="app-desc">A calm, ad-free learning hub for curious children in grades 3–6 — nine subjects and 13,000+ fact-checked questions. A treasure-house of knowledge.</p>
+          <span class="app-go">Visit →</span>
+        </a>
+
+        <a class="app" href="https://yoggit.github.io/ganitha-welcome/">
+          <div class="app-top">
+            <img class="app-ico" src="assets/ganitha.png" alt="" width="44" height="44">
+            <p class="app-name">Gaṇitha</p>
+            <span class="tag invite">🔒 Invitation-only</span>
+          </div>
+          <p class="app-desc">Elementary math &amp; reasoning practice — eight skill areas, a timed Full Practice Test, and a short “Why” explaining every answer you miss.</p>
+          <span class="app-go">Visit →</span>
+        </a>
+
+        <a class="app" href="https://yoggit.github.io/Abhyaasa/">
+          <div class="app-top">
+            <img class="app-ico" src="assets/abhyaasa.png" alt="" width="44" height="44">
+            <p class="app-name">Abhyaasa</p>
+            <span class="tag invite">🔒 Invitation-only</span>
+          </div>
+          <p class="app-desc">Track daily music practice, classes, and fees — kids log their practice and earn rewards, while parents share progress with a teacher. Works on any device — a music practice tracker.</p>
+          <span class="app-go">Visit →</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ── Professional ── -->
+    <section class="panel" id="panel-pro" role="tabpanel" aria-labelledby="tab-pro" hidden>
+      <p class="intro">Open-source tooling for QA engineers and test-automation teams — free to use, code on GitHub.</p>
+      <div class="cards">
+
+        <a class="app" href="https://yoggit.github.io/swayambhu-qa/">
+          <div class="app-top">
+            <div class="app-ico emoji" aria-hidden="true">🤖</div>
+            <p class="app-name">Swayambhu-QA</p>
+            <span class="tag oss">⚙️ Open source</span>
+          </div>
+          <p class="app-desc">An agentic-AI QA pipeline: give it a ticket, get back a passing test suite in under 30 minutes. Turns JIRA / GitHub issues into end-to-end tests across Playwright, Cypress, Selenium, REST Assured and more.</p>
+          <span class="app-go">Explore →</span>
+        </a>
+
+        <a class="app" href="https://yoggit.github.io/sarva-varadi/">
+          <div class="app-top">
+            <div class="app-ico emoji" aria-hidden="true">📊</div>
+            <p class="app-name">Sarva-Varadi</p>
+            <span class="tag oss">⚙️ Open source</span>
+          </div>
+          <p class="app-desc">A universal test-reporting framework that unifies results from Playwright, Selenium, REST Assured, Robot Framework and Cucumber into one clean, live dashboard — built for QA teams juggling many tools.</p>
+          <span class="app-go">View live demo →</span>
+        </a>
+
+      </div>
+    </section>
+
   </main>
 
   <footer>
@@ -142,6 +205,30 @@
 
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
+
+    // ---- category tabs (For Kids / Professional) ----
+    (function(){
+      var tabs = document.querySelectorAll('.tab');
+      var panels = { kids: document.getElementById('panel-kids'), pro: document.getElementById('panel-pro') };
+      function select(which){
+        tabs.forEach(function(t){
+          var on = t.dataset.tab === which;
+          t.classList.toggle('active', on);
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+        });
+        Object.keys(panels).forEach(function(k){
+          var on = k === which;
+          panels[k].classList.toggle('active', on);
+          if (on) panels[k].removeAttribute('hidden'); else panels[k].setAttribute('hidden', '');
+        });
+        if (history.replaceState) history.replaceState(null, '', which === 'pro' ? '#professional' : '#kids');
+      }
+      tabs.forEach(function(t){ t.addEventListener('click', function(){ select(t.dataset.tab); }); });
+      // Deep-link: #professional opens the Professional tab.
+      if ((location.hash || '').toLowerCase().indexOf('pro') !== -1) select('pro');
+    })();
+
+    // ---- light / dark theme toggle ----
     (function(){
       var root = document.documentElement, KEY = 'apps-theme';
       var btn = document.getElementById('themeToggle');
