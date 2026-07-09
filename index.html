@@ -101,8 +101,9 @@
   .app-desc{color:var(--muted); margin:10px 0 0; font-size:15px;}
   .app-go{display:inline-block; margin-top:14px; color:var(--gold); font-weight:700; font-size:14.5px;}
   .app-ico{width:44px; height:44px; border-radius:11px; object-fit:cover; flex-shrink:0; box-shadow:0 2px 8px var(--shadow);}
-  .app-ico.emoji{display:flex; align-items:center; justify-content:center; font-size:23px;
-    background:var(--trk-bg); border:1px solid var(--trk-bd); box-shadow:none;}
+  /* brand logos that carry their own dark background — contain + a matching tile bg keeps the whole
+     mark visible with no clipping and no visible letterbox. */
+  .app-ico.logo{object-fit:contain; border:1px solid var(--line);}
 
   footer{text-align:center; color:var(--muted); font-size:12.5px; padding:34px 20px 46px; line-height:1.7;}
   footer .disc{max-width:600px; margin:8px auto 0; opacity:.8;}
@@ -115,7 +116,7 @@
     <div class="wrap">
       <p class="kicker">Apps</p>
       <h1>Made with care</h1>
-      <p class="lead">Two different things I build: calm, ad-free apps for curious kids and their families, and open-source tools for QA &amp; test automation.</p>
+      <p class="lead">Two kinds of things in one place — calm, ad-free apps for curious kids and their families, and open-source tools for QA &amp; test automation.</p>
     </div>
   </header>
 
@@ -173,7 +174,7 @@
 
         <a class="app" href="https://yoggit.github.io/swayambhu-qa/">
           <div class="app-top">
-            <div class="app-ico emoji" aria-hidden="true">🤖</div>
+            <img class="app-ico logo" src="assets/swayambhu.png" alt="" width="44" height="44" style="background:#1b1b1f">
             <p class="app-name">Swayambhu-QA</p>
             <span class="tag oss">⚙️ Open source</span>
           </div>
@@ -183,7 +184,7 @@
 
         <a class="app" href="https://yoggit.github.io/sarva-varadi/">
           <div class="app-top">
-            <div class="app-ico emoji" aria-hidden="true">📊</div>
+            <img class="app-ico logo" src="assets/sarva-varadi.png" alt="" width="44" height="44" style="background:#0f1321">
             <p class="app-name">Sarva-Varadi</p>
             <span class="tag oss">⚙️ Open source</span>
           </div>
