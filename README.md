@@ -9,9 +9,9 @@
 
 Public landing hub served at **https://yoggit.github.io/apps/**, split into two categories:
 
-**For Kids** — calm, ad-free, invitation-only apps for children and their families:
-- **Gnaana-Kosha** — invitation-only learning hub (grades 3–6) → https://yoggit.github.io/gnaana-kosha-welcome/
-- **Gaṇitha** — invitation-only elementary math & reasoning practice → https://yoggit.github.io/ganitha-welcome/
+**For Kids** — calm, ad-free apps for children and their families:
+- **Gnaana-Kosha** — private learning hub (grades 3–6) → https://yoggit.github.io/gnaana-kosha-welcome/
+- **Gaṇitha** — private elementary math & reasoning practice → https://yoggit.github.io/ganitha-welcome/
 - **Abhyaasa** — music practice tracker → https://yoggit.github.io/Abhyaasa/
 
 **Professional** — open-source tools for QA & test automation:
