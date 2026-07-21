@@ -233,7 +233,7 @@
             <p class="app-name">Swayambhu-QA</p>
             <span class="tag oss">⚙️ Open source</span>
           </div>
-            <p class="app-say">swa·yam·bhu · Q · A<button class="app-pron" type="button" hidden data-say="swa·yam·bhu · Q · A" data-kn="ಸ್ವಯಂಭು" aria-label="Hear how to say Swayambhu-QA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
+            <p class="app-say">swa·yam·bhu · Q · A<button class="app-pron" type="button" hidden data-say="swa·yam·bhu · Q · A" data-kn="ಸ್ವಯಂಭು" data-tail="Q A" aria-label="Hear how to say Swayambhu-QA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
           <p class="app-desc">An agentic-AI QA pipeline: give it a ticket, get back a passing test suite in under 30 minutes. Turns JIRA / GitHub issues into end-to-end tests across Playwright, Cypress, Selenium, REST Assured and more.</p>
           <a class="app-go" href="https://yoggit.github.io/swayambhu-qa/">Explore →</a>
         </div>
@@ -318,6 +318,14 @@
       for(var j=0;j<v.length;j++) if(v[j].lang === "en-IN" || v[j].lang === "en_IN") return {v:v[j], kn:false};
       return null;
     }
+    function english(){
+      var v = speechSynthesis.getVoices() || [], any = null;
+      for(var i=0;i<v.length;i++){
+        if(v[i].lang === "en-IN" || v[i].lang === "en_IN") return v[i];
+        if(!any && v[i].lang && v[i].lang.indexOf("en") === 0) any = v[i];
+      }
+      return any;
+    }
     function sync(){ var ok = !!pick(); btns.forEach(function(b){ b.hidden = !ok; }); }
     sync();
     speechSynthesis.addEventListener && speechSynthesis.addEventListener("voiceschanged", sync);
@@ -326,12 +334,26 @@
         e.preventDefault(); e.stopPropagation();      /* never follow the card's link */
         var got = pick(); if(!got) return;
         speechSynthesis.cancel();
-        var u = new SpeechSynthesisUtterance(got.kn ? b.dataset.kn : b.dataset.say.replace(/·/g, " "));
-        u.voice = got.v; u.lang = got.v.lang; u.rate = 0.85;
         btns.forEach(function(x){ x.classList.remove("saying"); });
         b.classList.add("saying");
-        u.onend = u.onerror = function(){ b.classList.remove("saying"); };
-        speechSynthesis.speak(u);
+        /* Build the queue. With a Kannada voice we say the Kannada word, then any trailing
+           initialism as English LETTERS in an English voice — a kn voice reading "Q A" mangles it,
+           and the no-anglicising rule is about the NAME, not about the alphabet. With en-IN we just
+           read the respelling, which already contains the letters. */
+        var queue = [];
+        if(got.kn){
+          queue.push({ text: b.dataset.kn, voice: got.v });
+          if(b.dataset.tail) queue.push({ text: b.dataset.tail, voice: english() || got.v });
+        } else {
+          queue.push({ text: b.dataset.say.replace(/·/g, " "), voice: got.v });
+        }
+        queue.forEach(function(part, i){
+          var u = new SpeechSynthesisUtterance(part.text);
+          u.voice = part.voice; u.lang = part.voice.lang; u.rate = 0.85;
+          if(i === queue.length - 1)
+            u.onend = u.onerror = function(){ b.classList.remove("saying"); };
+          speechSynthesis.speak(u);
+        });
       });
     });
   })();
