@@ -127,7 +127,13 @@
 
   footer{text-align:center; color:var(--muted); font-size:12.5px; padding:34px 20px 46px; line-height:1.7;}
   footer .disc{max-width:600px; margin:8px auto 0; opacity:.8;}
-</style>
+
+  /* Pronunciation under each card's name. Sits OUTSIDE .app-top on purpose: inside that flex row it
+     becomes a third item and sits beside short names while wrapping under long ones. No speaker
+     here either — the card is an <a>, and a <button> inside a link is invalid and eats the click. */
+  .app-say{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px;
+    color:var(--muted); letter-spacing:.02em; margin:6px 0 0;}
+  </style>
 </head>
 <body>
   <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light or dark theme">☀️</button>
@@ -166,6 +172,7 @@
             <img class="app-ico" src="assets/gnaana.png" alt="" width="44" height="44">
             <p class="app-name">Gnaana-Kosha</p>
           </div>
+          <p class="app-say">gnyaa·na · koh·sha</p>
           <p class="app-desc">A calm, ad-free learning hub for curious children in grades 3–6 — eight subjects and a growing library of thousands of fact-checked questions. A treasure-house of knowledge.</p>
           <span class="app-go">Visit →</span>
         </a>
@@ -175,6 +182,7 @@
             <img class="app-ico" src="assets/ganitha.png" alt="" width="44" height="44">
             <p class="app-name">Gaṇitha</p>
           </div>
+          <p class="app-say">ga·ni·tha</p>
           <p class="app-desc">Elementary math &amp; reasoning practice — eight skill areas, a timed Full Practice Test, and a short “Why” explaining every answer you miss.</p>
           <span class="app-go">Visit →</span>
         </a>
@@ -184,6 +192,7 @@
             <img class="app-ico" src="assets/abhyaasa.png" alt="" width="44" height="44">
             <p class="app-name">Abhyaasa</p>
           </div>
+            <p class="app-say">a·bhyaa·sa</p>
           <p class="app-desc">Track daily music practice, classes, and fees — kids log their practice and earn rewards, while parents share progress with a teacher. Works on any device — a music practice tracker.</p>
           <span class="app-go">Visit →</span>
         </a>
@@ -193,6 +202,7 @@
             <img class="app-ico" src="assets/yantra-yukti.png" alt="" width="44" height="44">
             <p class="app-name">Yantra-Yukti</p>
           </div>
+          <p class="app-say">yan·tra · yuk·ti</p>
           <p class="app-desc">Build how things work — program the hidden logic of everyday machines, press Run, and watch your design come alive. Circuits draws electricity as water, then climbs from a lamp that mustn't pop all the way to a machine that adds. And the 3D Tinker Lab lets kids wire real parts, then print a handout and build it for real.</p>
           <span class="app-go">Visit →</span>
         </a>
@@ -211,6 +221,7 @@
             <p class="app-name">Swayambhu-QA</p>
             <span class="tag oss">⚙️ Open source</span>
           </div>
+            <p class="app-say">swa·yam·bhu · Q · A</p>
           <p class="app-desc">An agentic-AI QA pipeline: give it a ticket, get back a passing test suite in under 30 minutes. Turns JIRA / GitHub issues into end-to-end tests across Playwright, Cypress, Selenium, REST Assured and more.</p>
           <span class="app-go">Explore →</span>
         </a>
@@ -221,6 +232,7 @@
             <p class="app-name">Sarva-Varadi</p>
             <span class="tag oss">⚙️ Open source</span>
           </div>
+            <p class="app-say">sar·va · va·ra·di</p>
           <p class="app-desc">A universal test-reporting framework that unifies results from Playwright, Selenium, REST Assured, Robot Framework and Cucumber into one clean, live dashboard — built for QA teams juggling many tools.</p>
           <span class="app-go">View live demo →</span>
         </a>
