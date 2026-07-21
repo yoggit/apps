@@ -233,7 +233,7 @@
             <p class="app-name">Swayambhu-QA</p>
             <span class="tag oss">⚙️ Open source</span>
           </div>
-            <p class="app-say">swa·yam·bhu · Q · A<button class="app-pron" type="button" hidden data-say="swa·yam·bhu · Q · A" data-kn="ಸ್ವಯಂಭು" data-tail="Q A" aria-label="Hear how to say Swayambhu-QA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
+            <p class="app-say">swa·yam·bhu · Q · A<button class="app-pron" type="button" hidden data-say="swa·yam·bhu · Q · A" data-kn="ಸ್ವಯಂಭು ಕ್ಯೂ ಏ" aria-label="Hear how to say Swayambhu-QA"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
           <p class="app-desc">An agentic-AI QA pipeline: give it a ticket, get back a passing test suite in under 30 minutes. Turns JIRA / GitHub issues into end-to-end tests across Playwright, Cypress, Selenium, REST Assured and more.</p>
           <a class="app-go" href="https://yoggit.github.io/swayambhu-qa/">Explore →</a>
         </div>
@@ -333,9 +333,10 @@
            mid-name, which sounds broken however correct each half is. The Web Speech API exposes no
            gender field, so "the same voice throughout" is the guarantee that can actually be made.
            A trailing initialism rides along in the same breath. */
-        var text = got.kn
-          ? b.dataset.kn + (b.dataset.tail ? " " + b.dataset.tail : "")
-          : b.dataset.say.replace(/·/g, " ");
+        /* data-kn carries the ENTIRE spoken form in Kannada script, initialisms included — a
+           Kannada voice given Latin letters says gibberish. English voices get the respelling,
+           which already spells the letters out. */
+        var text = got.kn ? b.dataset.kn : b.dataset.say.replace(/·/g, " ");
         var u = new SpeechSynthesisUtterance(text);
         u.voice = got.v; u.lang = got.v.lang; u.rate = 0.85;
         u.onend = u.onerror = function(){ b.classList.remove("saying"); };
