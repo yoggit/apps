@@ -1,0 +1,15 @@
+{
+  "name": "ythr — apps for curious kids & for QA",
+  "short_name": "ythr apps",
+  "description": "A small collection of apps: calm, ad-free apps for curious kids and their families, and open-source tools for QA and testing.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f7f8fc",
+  "theme_color": "#0B0E2E",
+  "icons": [
+    { "src": "assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}

@@ -9,7 +9,10 @@
 <meta name="theme-color" content="#f7f8fc" media="(prefers-color-scheme: light)">
 <link rel="icon" type="image/png" href="assets/favicon-onlight.png">
 <link rel="icon" type="image/png" media="(prefers-color-scheme: dark)" href="assets/favicon-ondark.png">
-<link rel="apple-touch-icon" href="assets/favicon-onlight.png">
+<link rel="apple-touch-icon" href="assets/icon-192.png">
+<!-- Without a manifest, Android installs this page as a bookmark shortcut: a Chrome-badged icon
+     that opens in a browser tab. The manifest plus sw.js is what makes it install as a real app. -->
+<link rel="manifest" href="manifest.webmanifest">
 <!-- Fonts are served from this origin, not fonts.googleapis.com: a hot-linked face hands a
      child's IP address to a third party on every page load. SIL OFL, see assets/fonts/OFL.txt. -->
 <link href="assets/fonts/fonts.css" rel="stylesheet">
@@ -271,7 +274,7 @@
 
   <footer>
     <div class="wrap">
-      <div>© <span id="yr">2026</span> yoggit · Independently prepared.</div>
+      <div>© <span id="yr">2026</span> yoggit · Independently prepared · <a href="LICENSE">Licence</a></div>
       <div class="disc">No tracking or analytics beyond what each app needs to work. Not affiliated with any testing organization or test publisher.</div>
     </div>
   </footer>
@@ -359,6 +362,17 @@
       });
     });
   })();
+</script>
+
+<!-- Registered after load so it never competes with the page's own first paint. Its scope is the
+     directory this file sits in (/apps/), which is all this site owns on the shared origin — the
+     landing pages are siblings and must not be caught by it. -->
+<script>
+  if ("serviceWorker" in navigator) {
+    addEventListener("load", function () {
+      navigator.serviceWorker.register("sw.js").catch(function () {});
+    });
+  }
 </script>
 </body>
 </html>
