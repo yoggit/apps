@@ -6,11 +6,11 @@
 // tab, which is exactly what this page did before.
 //
 // Everything here is a static marketing page, so there is nothing private to leak into the cache.
-// (Dinachari is the deliberate exception in this family and has no service worker at all — see its
-// notes. Nothing in that decision changes because of this file.)
+// (Dinachari and Chukta have workers too, added for the same reason, but theirs cache only an
+// explicit allowlist because those apps hold somebody's data. This one has none to hold.)
 //
 // 🔴 BUMP CACHE ON EVERY DEPLOY THAT TOUCHES A PRECACHED FILE, or the change reaches nobody.
-const CACHE = "hub-v1";
+const CACHE = "hub-v2";
 
 // Precache the whole shell rather than a subset: a file that is NOT precached falls back, on a
 // failed fetch, to whatever copy happens to be lying in the cache — possibly from an older deploy.

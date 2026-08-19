@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Licence</title>
+<meta name="robots" content="noindex">
+<!-- Self-contained on purpose. This same file ships in every repo, and each app has its own
+     stylesheet with its own tokens — depending on one would mean eighteen variants to keep in
+     step. The raw text also lives at /LICENSE; this page is the readable form of it, because
+     Chrome renders text/plain without wrapping and a 79-character line runs off a phone. -->
+<style>
+  :root{
+    --paper:#F4F6FB; --card:#FFFFFF; --ink:#141A3D; --soft:#4E568A; --faint:#7A82AE;
+    --line:#DFE4F2; --accent:#2A3382;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0E2E; --card:#161B45; --ink:#F2F4FD; --soft:#A8B0DC; --faint:#7F87B8;
+      --line:#272E5E; --accent:#A9B4F5;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0E2E; --card:#161B45; --ink:#F2F4FD; --soft:#A8B0DC; --faint:#7F87B8;
+    --line:#272E5E; --accent:#A9B4F5;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    font-size:16px; line-height:1.7; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:38rem; margin:0 auto; padding:clamp(1.5rem,5vw,3rem) 1.15rem 3.5rem}
+  a.back{
+    display:inline-block; margin:0 0 1.6rem; color:var(--accent); text-decoration:none;
+    font-size:.95rem; font-weight:600;
+  }
+  a.back:hover{text-decoration:underline}
+  a.back:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:4px}
+  h1{font-size:1.7rem; line-height:1.2; margin:0 0 .2rem; letter-spacing:-.01em}
+  .holder{color:var(--soft); margin:0 0 2rem; font-size:1.02rem}
+  h2{
+    font-size:.72rem; letter-spacing:.13em; text-transform:uppercase; color:var(--faint);
+    font-weight:700; margin:2rem 0 .5rem; padding-bottom:.4rem; border-bottom:1px solid var(--line);
+  }
+  p{margin:0 0 .85rem; max-width:62ch}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:6px;
+    padding:1rem 1.15rem; margin:1rem 0;
+  }
+  .warranty{font-size:.88rem; color:var(--soft); line-height:1.6}
+  .warranty p{margin:0}
+  footer{
+    margin-top:2.5rem; padding-top:1.1rem; border-top:1px solid var(--line);
+    color:var(--faint); font-size:.88rem;
+  }
+  footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="./">&larr; Back to the app</a>
+
+  <h1>Licence</h1>
+  <p class="holder">Copyright &copy; 2026 yoggit. All rights reserved.</p>
+
+  <h2>What this covers</h2>
+  <p>This app, and the written, visual and audio content that comes with it, are proprietary works.
+  They are made available for viewing and for personal use through the author's own hosted services
+  only.</p>
+
+  <h2>What you may not do</h2>
+  <p>No permission is granted to copy, modify, merge, publish, distribute, sublicense, sell, or
+  create derivative works from any part of it, in whole or in part, by any means, without the prior
+  written permission of the copyright holder.</p>
+
+  <h2>Other people's work</h2>
+  <p>Third-party components keep their own licences. Those are reproduced alongside them and are
+  not affected by this notice.</p>
+  <p>Where this project names another organisation's test, standard or product, that name is used
+  descriptively, to identify it. No affiliation with or endorsement by that organisation is claimed
+  or implied.</p>
+
+  <h2>No warranty</h2>
+  <div class="card warranty">
+    <p>THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+    INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+    AND NONINFRINGEMENT. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR
+    OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+    CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+  </div>
+
+  <footer>
+    The same terms as plain text: <a href="LICENSE">/LICENSE</a>.
+  </footer>
+
+</div>
+</body>
+</html>
