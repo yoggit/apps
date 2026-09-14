@@ -10,7 +10,7 @@
 // explicit allowlist because those apps hold somebody's data. This one has none to hold.)
 //
 // 🔴 BUMP CACHE ON EVERY DEPLOY THAT TOUCHES A PRECACHED FILE, or the change reaches nobody.
-const CACHE = "hub-v3";
+const CACHE = "hub-v4";
 
 // Precache the whole shell rather than a subset: a file that is NOT precached falls back, on a
 // failed fetch, to whatever copy happens to be lying in the cache — possibly from an older deploy.
