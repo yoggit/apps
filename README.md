@@ -13,6 +13,10 @@ Public landing hub served at **https://yoggit.github.io/apps/**, split into two 
 - **Gnaana-Kosha** — private learning hub (grades 3–6) → https://yoggit.github.io/gnaana-kosha-welcome/
 - **Gaṇitha** — private elementary math & reasoning practice → https://yoggit.github.io/ganitha-welcome/
 - **Abhyaasa** — music practice tracker → https://yoggit.github.io/Abhyaasa/
+- **Bhaashe** — learn a language from your first word → https://yoggit.github.io/Bhaashe-welcome/
+- **Yantra-Yukti** — build how things work, plus a 3D Tinker Lab → https://yoggit.github.io/yantra-yukti-welcome/
+- **Vitta** — how money works, one drop at a time → https://yoggit.github.io/Vitta-welcome/
+- **Aata** — keep the score for any game, and play chowka bara → https://yoggit.github.io/aata-welcome/
 
 **Professional** — open-source tools for QA & test automation:
 - **Swayambhu-QA** — agentic-AI QA pipeline (ticket → passing test suite) → https://yoggit.github.io/swayambhu-qa/
