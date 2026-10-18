@@ -103,6 +103,10 @@
     transition:background .15s ease, color .15s ease;}
   .tab:hover{color:var(--ink);}
   .tab.active{background:var(--gold); color:var(--on-gold); box-shadow:0 4px 12px var(--shadow);}
+  /* Three tabs on a phone: each label stays on one line (a label broken over two reads as two tabs). */
+  .tab{white-space:nowrap;}
+  @media (max-width:520px){ .tabsbar{padding:14px 12px 6px;} .tabs{gap:2px; padding:4px;} .tab{font-size:14px; padding:9px 12px;} }
+  @media (max-width:360px){ .tab{font-size:13px; padding:8px 9px;} }
 
   .panel{display:none; animation:fade .28s ease;}
   .panel.active{display:block;}
@@ -169,13 +173,14 @@
       </div>
       <p class="kicker">Apps</p>
       <h1>Made with care</h1>
-      <p class="lead">Two kinds of things in one place — calm, ad-free apps for curious kids and their families, and open-source tools for QA &amp; test automation.</p>
+      <p class="lead">Three kinds of things in one place — calm, ad-free apps for curious kids and their families, things to enjoy in your own time, and open-source tools for QA &amp; test automation.</p>
     </div>
   </header>
 
   <div class="tabsbar">
     <div class="tabs" role="tablist" aria-label="App categories">
       <button class="tab active" id="tab-kids" role="tab" aria-selected="true"  aria-controls="panel-kids" data-tab="kids">🧒 For Kids</button>
+      <button class="tab"        id="tab-leisure" role="tab" aria-selected="false" aria-controls="panel-leisure" data-tab="leisure">☕ For Leisure</button>
       <button class="tab"        id="tab-pro"  role="tab" aria-selected="false" aria-controls="panel-pro"  data-tab="pro">🛠️ Professional</button>
     </div>
   </div>
@@ -246,6 +251,24 @@
           <a class="app-go" href="https://yoggit.github.io/Vitta-welcome/">Visit →</a>
         </div>
 
+        <div class="app" title="Exam preparation with questions you can trust — every question written from the prescribed textbooks to the pattern of the real paper, then checked by five independent reviewers before any student sees it. Step-by-step solutions, a shortcut for the exam hall, timed tests in each exam's own format, and a read-only parent view. Two exams are open: KCET and JEE Main.">
+          <div class="app-top">
+            <img class="app-ico" src="assets/siddhate.png" alt="" width="40" height="40">
+            <p class="app-name">Siddhate</p>
+          </div>
+          <p class="app-say">sid·dha·te<button class="app-pron" type="button" hidden data-say="sid·dha·te" data-kn="ಸಿದ್ಧತೆ" aria-label="Hear how to say Siddhate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
+          <p class="app-desc">Exam preparation with questions you can trust — original questions, worked solutions and timed tests in each exam's own format. KCET and JEE Main.</p>
+          <a class="app-go" href="https://yoggit.github.io/siddhate-welcome/">Visit →</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── For Leisure ── -->
+    <section class="panel" id="panel-leisure" role="tabpanel" aria-labelledby="tab-leisure" hidden>
+      <p class="intro">Things to enjoy in your own time — a game for the family table, and Kannada poems, songs and stories.</p>
+      <div class="cards">
+
         <div class="app" title="Keep the score for any card or board game — players across, rounds down, totals as you type, and it works out who won. It also plays chowka bara (ashta chamma) on a 5×5 or 7×7 board. No sign-in, works offline, and the game never leaves your device.">
           <div class="app-top">
             <img class="app-ico" src="assets/aata.png" alt="" width="40" height="40">
@@ -256,14 +279,13 @@
           <a class="app-go" href="https://yoggit.github.io/aata-welcome/">Visit →</a>
         </div>
 
-        <div class="app" title="Exam preparation with questions you can trust — every question written from the prescribed textbooks to the pattern of the real paper, then checked by five independent reviewers before any student sees it. Step-by-step solutions, a shortcut for the exam hall, timed tests in each exam's own format, and a read-only parent view. Two exams are open: KCET and JEE Main.">
+        <div class="app" title="Kannada poems, short verses (ಹನಿಗವನಗಳು), songs written for film tunes and short stories by ManahShaayi — ಭಾವನೆಗಳ ಅಂಗಳದಲಿ ಪದಗಳ ಓಡಾಟ. Browse it the Blogspot way, year by year, or section by section. Sign in with Google to read.">
           <div class="app-top">
-            <img class="app-ico" src="assets/siddhate.png" alt="" width="40" height="40">
-            <p class="app-name">Siddhate</p>
+            <img class="app-ico" src="assets/manahshaayi.png" alt="" width="40" height="40">
+            <p class="app-name">ManahShaayi</p>
           </div>
-          <p class="app-say">sid·dha·te<button class="app-pron" type="button" hidden data-say="sid·dha·te" data-kn="ಸಿದ್ಧತೆ" aria-label="Hear how to say Siddhate"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
-          <p class="app-desc">Exam preparation with questions you can trust — original questions, worked solutions and timed tests in each exam's own format. KCET and JEE Main.</p>
-          <a class="app-go" href="https://yoggit.github.io/siddhate-welcome/">Visit →</a>
+          <p class="app-desc">Kannada poems, short verses, songs written for film tunes, and short stories — ಭಾವನೆಗಳ ಅಂಗಳದಲಿ ಪದಗಳ ಓಡಾಟ. Sign in with Google to read.</p>
+          <a class="app-go" href="https://manahshaayi.web.app/">Read →</a>
         </div>
 
       </div>
@@ -311,10 +333,11 @@
   <script>
     document.getElementById('yr').textContent = new Date().getFullYear();
 
-    // ---- category tabs (For Kids / Professional) ----
+    // ---- category tabs (For Kids / For Leisure / Professional) ----
     (function(){
       var tabs = document.querySelectorAll('.tab');
-      var panels = { kids: document.getElementById('panel-kids'), pro: document.getElementById('panel-pro') };
+      var panels = { kids: document.getElementById('panel-kids'), leisure: document.getElementById('panel-leisure'), pro: document.getElementById('panel-pro') };
+      var HASH = { kids: '#kids', leisure: '#leisure', pro: '#professional' };
       function select(which){
         tabs.forEach(function(t){
           var on = t.dataset.tab === which;
@@ -326,11 +349,13 @@
           panels[k].classList.toggle('active', on);
           if (on) panels[k].removeAttribute('hidden'); else panels[k].setAttribute('hidden', '');
         });
-        if (history.replaceState) history.replaceState(null, '', which === 'pro' ? '#professional' : '#kids');
+        if (history.replaceState) history.replaceState(null, '', HASH[which]);
       }
       tabs.forEach(function(t){ t.addEventListener('click', function(){ select(t.dataset.tab); }); });
-      // Deep-link: #professional opens the Professional tab.
-      if ((location.hash || '').toLowerCase().indexOf('pro') !== -1) select('pro');
+      // Deep-links: #leisure and #professional open those tabs.
+      var h = (location.hash || '').toLowerCase();
+      if (h.indexOf('leisure') !== -1) select('leisure');
+      else if (h.indexOf('pro') !== -1) select('pro');
     })();
 
     // ---- light / dark theme toggle ----
