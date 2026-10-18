@@ -284,6 +284,7 @@
             <img class="app-ico" src="assets/manahshaayi.png" alt="" width="40" height="40">
             <p class="app-name">ManahShaayi</p>
           </div>
+          <p class="app-say" lang="kn">ಮನಃಶಾಯಿ<button class="app-pron" type="button" data-audio="assets/manahshaayi-say.m4a" aria-label="Hear ManahShaayi said by the author" title="Hear it said by the author"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg></button></p>
           <p class="app-desc">Kannada poems, short verses, songs written for film tunes, and short stories — ಭಾವನೆಗಳ ಅಂಗಳದಲಿ ಪದಗಳ ಓಡಾಟ. Sign in with Google to read.</p>
           <a class="app-go" href="https://manahshaayi.web.app/">Read →</a>
         </div>
@@ -381,8 +382,25 @@
   /* Card speakers. Same policy as the apps and the landing pages: a Kannada voice reading the
      Kannada script, or Indian English reading the respelling, or NO BUTTON — a US/UK voice
      anglicises the vowels and teaches the exact mispronunciation the line exists to correct. */
+  /* A name the owner RECORDED plays that recording — always shown, on every device, because it needs
+     no voice installed and is the authority on how the name is said (ManahShaayi). */
   (function(){
-    var btns = document.querySelectorAll(".app-pron");
+    var playing = null;
+    document.querySelectorAll(".app-pron[data-audio]").forEach(function(b){
+      b.hidden = false;
+      b.addEventListener("click", function(e){
+        e.preventDefault(); e.stopPropagation();      /* never follow the card's link */
+        if(playing){ playing.pause(); playing = null; }
+        var a = new Audio(b.dataset.audio);
+        playing = a;
+        b.classList.add("saying");
+        a.onended = a.onerror = function(){ b.classList.remove("saying"); };
+        a.play().catch(function(){ b.classList.remove("saying"); });
+      });
+    });
+  })();
+  (function(){
+    var btns = document.querySelectorAll(".app-pron:not([data-audio])");
     if(!btns.length || !window.speechSynthesis) return;
     function pick(){
       var v = speechSynthesis.getVoices() || [];
