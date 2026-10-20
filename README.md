@@ -19,7 +19,7 @@ Public landing hub served at **https://yoggit.github.io/apps/**, split into thre
 
 **For Leisure** — things to enjoy in your own time:
 - **Aata** — keep the score for any game, and play chowka bara → https://yoggit.github.io/aata-welcome/
-- **ManahShaayi** — Kannada poems, songs and short stories (sign in with Google) → https://manahshaayi.web.app/
+- **ManahShaayi** — Kannada poems, songs and short stories, and the songs on YouTube (sign in with Google) → https://manahshaayi.web.app/
 
 **Professional** — open-source tools for QA & test automation:
 - **Swayambhu-QA** — agentic-AI QA pipeline (ticket → passing test suite) → https://yoggit.github.io/swayambhu-qa/
